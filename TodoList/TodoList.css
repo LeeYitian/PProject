@@ -49,6 +49,7 @@ table {
 
 .wrap {
     min-height: 100vh;
+    min-width: 100vh;
     background: linear-gradient(174deg, #FFD370 2%, #FFD370 46%, #FFF 46%, #FFF 100%);
     padding-top: 48px;
 }
