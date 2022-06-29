@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/earlyaccess/notosanstc.css");
+@import url("https://fonts.googleapis.com/css?family=Baloo+Tamma+2:600, 700");
+
+/* cssReset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,ul {
+    list-style: none;
+}
+
+blockquote,q {
+    quotes: none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+.wrap {
+    min-height: 100vh;
+    background: linear-gradient(174deg, #FFD370 2%, #FFD370 46%, #FFF 46%, #FFF 100%);
+    padding-top: 48px;
+}
+
+h1 {
+    font-family: "Baloo Tamma 2";
+    font-weight: bold;
+    color: #333333;
+    letter-spacing: 8.75px;
+    font-size: 48px;
+    text-align: center;
+}
+
+.add {
+    position: relative;
+    width: 500px;
+    margin: 24px auto 8px;
+}
+
+
+input[name="addList"] {
+    width: 500px;
+    height: 48px;
+    padding: 12px 24px 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    outline: none;
+}
+
+input[name="addList"]::placeholder {
+    font-family: "NotoSansCJKtc";
+    color: #9F9A91;
+    letter-spacing: 0.7px;
+}
+
+input[name="addList"]+button {
+    position: absolute;
+    top: 4px;
+    left: 456px;
+    background: #333333;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-family: "NotoSansCJKtc";
+    font-weight: 300;
+    font-size: 32px;
+    color: #FFFFFF;
+    line-height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input[name="addList"]+button:hover {
+    transform: scale(0.9);
+}
+
+.list {
+    width: 500px;
+    background: #FFF;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.tab {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tab li {
+    width: 100%;
+    font-family: "NotoSansCJKtc";
+    font-weight: bold;
+    font-size: 14px;
+    color: #efefef;
+    letter-spacing: 0.7px;
+    line-height: 20px;
+    text-align: center;
+    padding: 16px;
+    border-bottom: 2px solid #efefef;
+    transition: 0.1s ease-in-out;
+    user-select: none;
+}
+
+li.active {
+    color: #333333;
+    border-bottom: 2px solid #333333;
+}
+.tab>li:hover{
+    color: #333333;
+    border-bottom: 2px solid #333333;
+}
+
+.listContent {
+    padding-right: 16px;
+    padding-left: 24px;
+    min-height: 400px;
+}
+
+.listContent li {
+    position: relative;
+}
+
+.listContent label {
+    display: block;
+    margin: 0px 32px 0px 36px;
+    border-bottom: 1px solid #efefef;
+    cursor: pointer;
+    user-select: none;
+    font-family: "NotoSansCJKtc";
+    font-size: 16px;
+    line-height: 56px;
+    color: #333333;
+    letter-spacing: 0.62px;
+}
+
+.listContent button {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0px;
+    box-sizing: content-box;
+    border: 5px solid transparent;
+    width: 16px;
+    height: 16px;
+    background: url("https://i.imgur.com/7Q4RjFx.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.listContent button:hover{
+    transform: scale(1.1) translateY(-50%);
+}
+
+.listContent li:hover button {
+    opacity: 1;
+}
+
+label::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+label::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 27%;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 0.5rem;
+    border-radius: 1px;
+    border-bottom: 3px solid #FFD370;
+    border-right: 3px solid #FFD370;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+#doneCheck {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#doneCheck:checked~label {
+    color: #9f9a91;
+    text-decoration: line-through;
+}
+
+#doneCheck:checked~label::before {
+    border-color: transparent;
+    transform: translateY(-50%) scale(0);
+}
+
+#doneCheck:checked~label::after {
+    opacity: 1;
+}
+
+.footer {
+    justify-content: space-between;
+    padding: 24px 48px 32px 24px;
+}
+.footer li{
+    font-size: 14px;
+    font-family: "NotoSansCJKtc";
+    color: #333333;
+    letter-spacing: 0.7px;
+    line-height: 20PX;
+}
+.footer .remove{
+    color: #9F9A91;
+    transition: 0.5s ease; 
+}
+.remove:hover{
+    color: #333333;
+    transform: scale(1.1);
+}
