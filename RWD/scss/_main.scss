@@ -241,6 +241,9 @@
     p {
         line-height: 1.3;
     }
+    img{
+        border-radius: 50%;
+    }
 }
 
 .chef {
@@ -287,6 +290,9 @@
 
     .customerTitle {
         color: change-color($color_d, $alpha: .75);
+    }
+    img{
+        border-radius: 50%;
     }
 }
 
