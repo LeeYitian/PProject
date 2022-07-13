@@ -550,6 +550,9 @@ footer .social .socialLogo a[title=twitter] {
 .feature p {
   line-height: 1.3;
 }
+.feature img {
+  border-radius: 50%;
+}
 
 .chef {
   background: #3D1101;
@@ -593,6 +596,9 @@ footer .social .socialLogo a[title=twitter] {
 }
 .response .customerTitle {
   color: rgba(61, 17, 1, 0.75);
+}
+.response img {
+  border-radius: 50%;
 }
 
 .reservation {
