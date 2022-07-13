@@ -385,7 +385,7 @@ footer .social .socialLogo a[title=twitter] {
   max-width: 100%;
 }
 .feature li h3 {
-  margin: 20px 0 11px 0;
+  margin: 20px auto 11px;
 }
 @media (max-width: 576px) {
   .feature h2,
