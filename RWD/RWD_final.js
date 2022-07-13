@@ -6,7 +6,7 @@ hamburger.addEventListener("click", () => body.classList.toggle("show"));
 
 //  main page menu effect
 let sitePath = window.location.pathname;
-let siteLocation = sitePath.split("/");
+let siteLocation = sitePath.split("/")[2];
 // console.log(siteLocation);
 if (siteLocation[siteLocation.length-1] === "RWD_final_main") {
     // menu scroll
