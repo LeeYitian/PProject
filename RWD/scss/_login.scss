@@ -1,0 +1,108 @@
+/*LOGIN PAGE*/
+
+/*STRUCTURE*/
+.loginForm{
+    h2{
+        margin: 5px 0 35px 0;
+    }
+    form{
+        max-width: 300px;
+        padding: 15px;
+        margin: 0 auto;
+        @include mobile{
+            padding: 10px;
+        }
+        legend{
+            margin-bottom: 16px;
+        }
+        input{
+            padding-left: 25px;
+           
+        }
+
+        .inputSet{
+            position: relative;
+            margin: 3px 0 15px 0;
+            &:last-of-type{
+                margin-bottom: 1px;
+            }
+            .material-symbols-outlined{
+                position: absolute;
+                top: 10px;
+                left: 9px;
+            }
+
+        }
+        
+        a{
+            margin-bottom: 30px;
+        }
+        button:first-of-type{
+            margin-right: 20px;
+        }
+    }
+}
+
+
+
+
+/*STYLE*/
+.iconPWD.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.loginForm{
+    background: $color_l;
+    @include typo(16px, 300,1,$color_d);
+    h1>a{
+        @extend %linkIMG;
+        background-image: url("./assets/logo_l@svg.svg");
+        background-size: contain;
+        width: 240px;
+        height: 48px;
+        margin: 0 auto;
+    }
+    h2{
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+    }
+    form{
+        
+        border-top: 3px solid $color_h;
+        @extend %boxShadow;
+        legend{
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+        input{
+            @extend %input;
+            width: 270px;
+            height: 32px;
+        }
+        .material-symbols-outlined{
+
+            color: change-color($color: $color_d, $alpha: .5);
+            font-size: 15px;
+        }
+        a{
+            color: $color_e;
+        }
+        button{
+            @extend %btn;
+            width: 125px;
+            height: 32px;
+            &:first-of-type{
+                background: rgba(0,0,0,0.35);
+            }
+            &:last-of-type{
+                background: $color_h;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,52 @@
+$font: 'Noto Sans TC', sans-serif;
+$color_d: #3D1101;
+$color_l: #EFE9E7;
+$color_h: #F56C23;
+$color_e: #FF5E45;
+
+%boxShadow {
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, .16);
+}
+
+%linkIMG {
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-indent: 101%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+%input {
+    display: block;
+    border: 1px solid #CCCCCC;
+    box-shadow: inset 0px 1px 0px 0px #ECECEC;
+    border-radius: 3px;
+}
+
+%btn {
+    border-radius: 3px;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+@mixin typo($fz, $fw, $lh, $color) {
+    font-size: $fz;
+    font-weight: $fw;
+    line-height: $lh;
+    color: $color;
+}
+
+
+
+@mixin tablet {
+    @media(max-width:768px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media(max-width:576px) {
+        @content;
+    }
+}

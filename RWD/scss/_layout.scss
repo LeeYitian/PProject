@@ -1,0 +1,324 @@
+/*ALL PAGES SETTING*/
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+body{
+    font-family: $font;
+}
+
+a {
+    box-sizing: content-box;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*LAYOUT STRUCTURE*/
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 43px 0 42px;
+
+    @include tablet {
+        padding: 0 11px 0;
+    }
+}
+
+header {
+    position: relative;
+    padding-top: 123px;
+    height: 420px;
+
+    .navigationArea {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+
+        li {
+            a {
+                padding: 19px 15px;
+            }
+        }
+    }
+
+    .material-symbols-outlined {
+        display: none;
+
+        @include mobile {
+            display: block;
+        }
+    }
+
+    .title {
+        max-width: 460px;
+        padding: 20px 22px 26px 22px;
+        margin: 0 auto;
+
+        span {
+            display: inline-block;
+        }
+
+        h3 {
+            margin-bottom: 16px;
+        }
+    }
+
+    @include mobile {
+        padding-top: 113px;
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            position: absolute;
+            top: 40px;
+            left: 0;
+
+        }
+
+        .title {
+            padding: 20px 6px;
+
+        }
+    }
+}
+
+
+footer {
+    .container {
+        align-items: flex-start;
+    }
+
+    padding: 50px 0;
+
+    .info {
+        align-items: stretch;
+        max-width: 600px;
+
+        h2 {
+            margin-bottom: 16px;
+
+        }
+
+        .about {
+            margin-right: 21px;
+            width: 50%;
+        }
+
+        address {
+            width: 50%;
+            a{
+                &[href*="tel"]{
+                    padding-top: 5px;
+                }
+                padding: 0px 5px 5px;
+            }
+        }
+
+    }
+
+    .social {
+        flex-direction: column;
+        align-items: flex-end;
+
+        h2 {
+            a {
+                width: 245px;
+                height: 48px;
+            }
+        }
+    }
+
+    .socialLogo {
+        justify-content: flex-end;
+    }
+
+    a {
+        display: inline-block;
+    }
+
+
+    @include mobile {
+        .container {
+            display: block;
+        }
+
+        .info {
+            display: block;
+
+            .about,
+            address {
+                margin-bottom: 30px;
+                width: 100%;
+            }
+        }
+
+
+    }
+}
+
+/*LAYOUT STYLE*/
+header {
+    background: {
+        image: url("./assets/header_desktop.png");
+        color: black;
+        repeat: no-repeat;
+        position: center top;
+        attachment: fixed;
+    }
+
+    @include mobile {
+        background-image: url("./assets/header_mobile.png");
+    }
+
+    .navigationArea {
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+    h1 {
+        @include typo(24px, 700, 56px, white);
+
+        a {
+            background-image: url(./assets/logo_w@svg.svg);
+            @extend %linkIMG;
+
+            @include tablet {
+                width: 94px;
+                height: 24px;
+                background-size: contain;
+            }
+
+        }
+    }
+
+    ul {
+        a {
+            @include typo(16px, 300, 1, white);
+            border-bottom: 5px solid transparent;
+        }
+
+        +.material-symbols-outlined {
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        @include mobile {
+            background: rgb(20, 20, 20);
+            width: 100%;
+
+            a {
+                text-align: center;
+            }
+
+        }
+
+    }
+
+    .title {
+        background: rgba(0, 0, 0, 0.35);
+        text-align: center;
+
+        h3 {
+            @include typo(36px, 400, 1, white);
+
+            @include mobile {
+                line-height: 1.3;
+            }
+        }
+
+        p {
+            @include typo(16px, 300, 1.5, white);
+        }
+
+        .material-symbols-outlined {
+            font-size: 16px;
+            vertical-align: middle;
+        }
+
+    }
+}
+
+footer {
+    background: $color_l;
+    @include typo(24px, 300, 1.3, $color_d);
+
+    p,
+    ul {
+        font-size: 16px;
+    }
+    
+    li::before {
+        content: "·";
+    }
+
+    .social {
+        h2 {
+            a {
+                @extend %linkIMG;
+
+                background: {
+                    image: url("./assets/logo_l@svg.svg");
+                    position: right center;
+                }
+            }
+        }
+
+        .socialLogo {
+
+            a,
+            .fa-fw {
+                font-size: 36px;
+                width: 37px;
+            }
+
+            a[title="google"] {
+                color: #DB4437;
+            }
+
+            a[title="facebook"] {
+                color: #3A5795;
+            }
+
+            a[title="twitter"] {
+                color: #41ABE1;
+            }
+        }
+
+    }
+}
+
+/*HOVER STYLE*/
+.underline:active,
+.underline:hover,
+.menu-active {
+    border-bottom: 2px solid white;
+}
+
+.outlDot:active,
+.outlDot:hover {
+    outline: 2px dotted $color_e;
+}
+
+/*MENU TOGGLE*/
+@include mobile{
+    header {
+        .menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: 1s ease;
+        }
+    }
+    .show .menu{
+        max-height: 200px;
+    }
+}

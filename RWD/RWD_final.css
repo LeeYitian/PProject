@@ -1,0 +1,1033 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.onlineShop .productArea li, .loginForm form {
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.16);
+}
+
+.loginForm h1 > a, footer .social h2 a, header h1 a {
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.loginForm form input, .reservation input[type=text],
+.reservation input[type=email],
+.reservation input[type=tel],
+.reservation input[type=number] {
+  display: block;
+  border: 1px solid #CCCCCC;
+  box-shadow: inset 0px 1px 0px 0px #ECECEC;
+  border-radius: 3px;
+}
+
+.onlineShop button, .loginForm form button, .reservation button {
+  border-radius: 3px;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+/*ALL PAGES SETTING*/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+a {
+  box-sizing: content-box;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*LAYOUT STRUCTURE*/
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 43px 0 42px;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0 11px 0;
+  }
+}
+
+header {
+  position: relative;
+  padding-top: 123px;
+  height: 420px;
+}
+header .navigationArea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+header .navigationArea li a {
+  padding: 19px 15px;
+}
+header .material-symbols-outlined {
+  display: none;
+}
+@media (max-width: 576px) {
+  header .material-symbols-outlined {
+    display: block;
+  }
+}
+header .title {
+  max-width: 460px;
+  padding: 20px 22px 26px 22px;
+  margin: 0 auto;
+}
+header .title span {
+  display: inline-block;
+}
+header .title h3 {
+  margin-bottom: 16px;
+}
+@media (max-width: 576px) {
+  header {
+    padding-top: 113px;
+  }
+  header .menu {
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 40px;
+    left: 0;
+  }
+  header .title {
+    padding: 20px 6px;
+  }
+}
+
+footer {
+  padding: 50px 0;
+}
+footer .container {
+  align-items: flex-start;
+}
+footer .info {
+  align-items: stretch;
+  max-width: 600px;
+}
+footer .info h2 {
+  margin-bottom: 16px;
+}
+footer .info .about {
+  margin-right: 21px;
+  width: 50%;
+}
+footer .info address {
+  width: 50%;
+}
+footer .info address a {
+  padding: 0px 5px 5px;
+}
+footer .info address a[href*=tel] {
+  padding-top: 5px;
+}
+footer .social {
+  flex-direction: column;
+  align-items: flex-end;
+}
+footer .social h2 a {
+  width: 245px;
+  height: 48px;
+}
+footer .socialLogo {
+  justify-content: flex-end;
+}
+footer a {
+  display: inline-block;
+}
+@media (max-width: 576px) {
+  footer .container {
+    display: block;
+  }
+  footer .info {
+    display: block;
+  }
+  footer .info .about,
+footer .info address {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+}
+
+/*LAYOUT STYLE*/
+header {
+  background-image: url("./assets/header_desktop.png");
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+@media (max-width: 576px) {
+  header {
+    background-image: url("./assets/header_mobile.png");
+  }
+}
+header .navigationArea {
+  background: rgba(0, 0, 0, 0.75);
+}
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 56px;
+  color: white;
+}
+header h1 a {
+  background-image: url(./assets/logo_w@svg.svg);
+}
+@media (max-width: 768px) {
+  header h1 a {
+    width: 94px;
+    height: 24px;
+    background-size: contain;
+  }
+}
+header ul a {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  color: white;
+  border-bottom: 5px solid transparent;
+}
+header ul + .material-symbols-outlined {
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+@media (max-width: 576px) {
+  header ul {
+    background: rgb(20, 20, 20);
+    width: 100%;
+  }
+  header ul a {
+    text-align: center;
+  }
+}
+header .title {
+  background: rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+header .title h3 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  color: white;
+}
+@media (max-width: 576px) {
+  header .title h3 {
+    line-height: 1.3;
+  }
+}
+header .title p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: white;
+}
+header .title .material-symbols-outlined {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+footer {
+  background: #EFE9E7;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.3;
+  color: #3D1101;
+}
+footer p,
+footer ul {
+  font-size: 16px;
+}
+footer li::before {
+  content: "·";
+}
+footer .social h2 a {
+  background-image: url("./assets/logo_l@svg.svg");
+  background-position: right center;
+}
+footer .social .socialLogo a,
+footer .social .socialLogo .fa-fw {
+  font-size: 36px;
+  width: 37px;
+}
+footer .social .socialLogo a[title=google] {
+  color: #DB4437;
+}
+footer .social .socialLogo a[title=facebook] {
+  color: #3A5795;
+}
+footer .social .socialLogo a[title=twitter] {
+  color: #41ABE1;
+}
+
+/*HOVER STYLE*/
+.underline:active,
+.underline:hover,
+.menu-active {
+  border-bottom: 2px solid white;
+}
+
+.outlDot:active,
+.outlDot:hover {
+  outline: 2px dotted #FF5E45;
+}
+
+/*MENU TOGGLE*/
+@media (max-width: 576px) {
+  header .menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: 1s ease;
+  }
+  .show .menu {
+    max-height: 200px;
+  }
+}
+/*PAGE_MAIN*/
+/*STRUCTURE*/
+.sectionPad {
+  padding: 50px 0;
+}
+
+.feature h2 {
+  justify-content: center;
+  margin-bottom: 31px;
+}
+.feature ul {
+  align-items: flex-start;
+}
+.feature li {
+  flex-direction: column;
+  width: 260px;
+  margin: 0 30px;
+}
+@media (max-width: 768px) {
+  .feature li {
+    width: 200px;
+  }
+}
+.feature li img {
+  max-width: 100%;
+}
+.feature li h3 {
+  margin: 20px 0 11px 0;
+}
+@media (max-width: 576px) {
+  .feature h2,
+.feature ul {
+    display: block;
+  }
+  .feature li {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+}
+
+.chef .container {
+  overflow-y: auto;
+  height: 460px;
+}
+.chef .chefIntro {
+  padding: 80px 0 80px 495px;
+}
+@media (max-width: 768px) {
+  .chef .chefIntro {
+    padding: 49px 0 49px 398px;
+  }
+}
+.chef .chefIntro p {
+  margin-top: 16px;
+}
+@media (max-width: 576px) {
+  .chef .container {
+    height: auto;
+  }
+  .chef .chefIntro {
+    padding: 490px 0 30px;
+  }
+}
+
+.response h2 {
+  margin-bottom: 32px;
+}
+.response ul {
+  align-items: flex-start;
+}
+.response ul li {
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 300px;
+}
+@media (max-width: 768px) {
+  .response ul li {
+    max-width: 235px;
+  }
+}
+.response ul li span {
+  align-self: flex-start;
+}
+.response p {
+  padding-left: 80px;
+  margin-bottom: 16px;
+}
+.response img {
+  margin-right: 13px;
+  vertical-align: middle;
+}
+@media (max-width: 576px) {
+  .response .container {
+    display: block;
+  }
+  .response ul li {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .response ul li:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.reservation .applyInfo {
+  align-items: flex-start;
+}
+.reservation h2 {
+  margin-bottom: 38px;
+}
+.reservation iframe {
+  margin-right: 20px;
+}
+.reservation form {
+  width: 460px;
+}
+.reservation input[type=text],
+.reservation input[type=email],
+.reservation input[type=tel],
+.reservation input[type=number] {
+  padding: 5px 0 5px 14px;
+  margin: 6px 0 12px 0;
+  width: 100%;
+}
+.reservation .checkVegan {
+  margin: 8px 0 36px;
+}
+.reservation input[type=radio] {
+  margin: 0 5px;
+}
+.reservation button {
+  float: right;
+}
+.reservation button:last-of-type {
+  margin-right: 11px;
+}
+.reservation .applyInfo::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (max-width: 576px) {
+  .reservation h2 {
+    margin-bottom: 30px;
+  }
+  .reservation .applyInfo {
+    display: block;
+  }
+  .reservation .applyInfo form {
+    width: 100%;
+  }
+  .reservation .applyInfo iframe {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
+/*STYLE*/
+.feature {
+  background: #EFE9E7;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  color: #3D1101;
+}
+.feature h2 {
+  text-align: center;
+  font-size: 20px;
+  line-height: 32px;
+}
+.feature h2::before, .feature h2::after {
+  content: "";
+  display: block;
+  width: 109px;
+  height: 1px;
+  background: #979797;
+  margin: 0 13px;
+}
+@media (max-width: 576px) {
+  .feature h2::before, .feature h2::after {
+    display: none;
+  }
+}
+.feature h3 {
+  font-size: 18px;
+}
+.feature p {
+  line-height: 1.3;
+}
+
+.chef {
+  background: #3D1101;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #EFE9E7;
+}
+.chef .container {
+  background-image: url("./assets/main_chef_brown.png");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-clip: content-box;
+}
+@media (max-width: 768px) {
+  .chef .container {
+    background-position: -97px 0px;
+  }
+}
+.chef h2 {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.response {
+  background: #EFE9E7;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  color: #3D1101;
+}
+.response h2 {
+  text-align: center;
+  font-size: 24px;
+}
+.response .name {
+  font-size: 18px;
+}
+.response p {
+  line-height: 24px;
+}
+.response .customerTitle {
+  color: rgba(61, 17, 1, 0.75);
+}
+
+.reservation {
+  background: rgba(250, 250, 250, 0.7);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+  color: #3D1101;
+}
+.reservation h2 {
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: center;
+}
+.reservation .checkVegan label {
+  vertical-align: middle;
+}
+.reservation input[type=radio] {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #4A90E2;
+  vertical-align: middle;
+}
+.reservation button {
+  width: 70px;
+  height: 32px;
+}
+.reservation button:first-of-type {
+  background: #F56C23;
+}
+.reservation button:last-of-type {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/*LOGIN PAGE*/
+/*STRUCTURE*/
+.loginForm h2 {
+  margin: 5px 0 35px 0;
+}
+.loginForm form {
+  max-width: 300px;
+  padding: 15px;
+  margin: 0 auto;
+}
+@media (max-width: 576px) {
+  .loginForm form {
+    padding: 10px;
+  }
+}
+.loginForm form legend {
+  margin-bottom: 16px;
+}
+.loginForm form input {
+  padding-left: 25px;
+}
+.loginForm form .inputSet {
+  position: relative;
+  margin: 3px 0 15px 0;
+}
+.loginForm form .inputSet:last-of-type {
+  margin-bottom: 1px;
+}
+.loginForm form .inputSet .material-symbols-outlined {
+  position: absolute;
+  top: 10px;
+  left: 9px;
+}
+.loginForm form a {
+  margin-bottom: 30px;
+}
+.loginForm form button:first-of-type {
+  margin-right: 20px;
+}
+
+/*STYLE*/
+.iconPWD.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.loginForm {
+  background: #EFE9E7;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1;
+  color: #3D1101;
+}
+.loginForm h1 > a {
+  background-image: url("./assets/logo_l@svg.svg");
+  background-size: contain;
+  width: 240px;
+  height: 48px;
+  margin: 0 auto;
+}
+.loginForm h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+.loginForm form {
+  border-top: 3px solid #F56C23;
+}
+.loginForm form legend {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+.loginForm form input {
+  width: 270px;
+  height: 32px;
+}
+.loginForm form .material-symbols-outlined {
+  color: rgba(61, 17, 1, 0.5);
+  font-size: 15px;
+}
+.loginForm form a {
+  color: #FF5E45;
+}
+.loginForm form button {
+  width: 125px;
+  height: 32px;
+}
+.loginForm form button:first-of-type {
+  background: rgba(0, 0, 0, 0.35);
+}
+.loginForm form button:last-of-type {
+  background: #F56C23;
+}
+
+/*REGISTER PAGE
+reference: LOGIN PAGE*/
+.registerForm form {
+  max-width: 620px;
+}
+@media (max-width: 576px) {
+  .registerForm form {
+    max-width: 300px;
+  }
+}
+.registerForm form .flex {
+  align-items: flex-start;
+}
+@media (max-width: 576px) {
+  .registerForm form .flex {
+    flex-direction: column;
+  }
+  .registerForm form .flex P {
+    order: 2;
+    margin-bottom: 30px;
+  }
+  .registerForm form .flex fieldset {
+    width: 100%;
+  }
+  .registerForm form .flex fieldset input {
+    width: 100%;
+  }
+}
+.registerForm form p {
+  line-height: 1.3;
+  margin-right: 20px;
+}
+.registerForm form button.registerBTN {
+  float: right;
+  margin-right: 0;
+}
+.registerForm form::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*CART PAGE*/
+/*STRUCTURE*/
+.onlineShop .container.flex {
+  align-items: flex-start;
+}
+.onlineShop .productList {
+  margin-right: 20px;
+}
+.onlineShop .productList i {
+  margin-right: 15px;
+}
+.onlineShop .productList li {
+  padding-left: 8px;
+}
+.onlineShop .productList li:first-of-type {
+  margin-top: 16px;
+}
+.onlineShop .productList a {
+  width: 212px;
+}
+.onlineShop .searchCart {
+  margin-bottom: 26px;
+}
+.onlineShop .searchCart input {
+  padding: 5px 0 5px 14px;
+}
+.onlineShop .cartArea {
+  white-space: nowrap;
+}
+.onlineShop .cartArea a {
+  display: inline-block;
+}
+.onlineShop .cartArea a:last-of-type {
+  position: relative;
+}
+.onlineShop .cartArea .circleNUM {
+  position: absolute;
+  top: -3px;
+  right: 6px;
+}
+.onlineShop .productArea ul.flex {
+  flex-wrap: wrap;
+}
+.onlineShop .productArea li {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.onlineShop .productArea li button:last-child {
+  padding: 3px;
+  margin: 13px auto 0;
+  display: block;
+}
+.onlineShop .productArea li button:last-child .cartIcon {
+  margin-right: 8px;
+}
+.onlineShop .productArea li h3::after {
+  display: block;
+  margin: 8px auto 20px;
+}
+.onlineShop .productArea li img {
+  margin-bottom: 11px;
+}
+@media (max-width: 576px) {
+  .onlineShop .container {
+    display: block;
+    overflow: hidden;
+  }
+  .onlineShop .productList {
+    margin-right: 0;
+  }
+  .onlineShop .searchCart {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .onlineShop .searchCart .searchBox {
+    margin-top: 22px;
+    margin-bottom: 20px;
+  }
+  .onlineShop .productArea ul {
+    display: block;
+  }
+}
+
+/*STYLE*/
+.onlineShop {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+  color: #3D1101;
+  background: #EFE9E7;
+}
+.onlineShop .productList {
+  line-height: 32px;
+}
+.onlineShop .productList i {
+  font-size: 32px;
+  vertical-align: middle;
+}
+.onlineShop .productList li {
+  border-bottom: 1px solid #3D1101;
+}
+.onlineShop .productList a {
+  font-size: 16px;
+  line-height: 33px;
+}
+.onlineShop .searchCart .searchBox {
+  width: 67.7%;
+}
+.onlineShop .searchCart input {
+  background: #EFE9E7;
+  border: 2px solid #3D1101;
+  border-radius: 0;
+  width: calc(100% - 36px);
+  height: 32px;
+}
+.onlineShop .searchCart button {
+  background: #3D1101;
+  width: 36px;
+  height: 32px;
+  border-radius: 0;
+}
+.onlineShop .searchCart a {
+  font-size: 16px;
+  vertical-align: middle;
+  padding: 0 12px;
+}
+.onlineShop .searchCart a:first-of-type {
+  border-right: 1px solid #3D1101;
+}
+.onlineShop .searchCart .circleNUM {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FF5E45;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  line-height: 14px;
+}
+.onlineShop .searchCart .cartIcon {
+  vertical-align: middle;
+  font-size: 29px;
+}
+.onlineShop .productArea {
+  width: calc(100% - 220px);
+}
+.onlineShop .productArea li {
+  max-width: 220px;
+  text-align: center;
+}
+.onlineShop .productArea li button:last-child {
+  width: calc(100% - 20px);
+  background-color: #EFE9E7;
+  color: #FF5E45;
+  border: 2px solid #FF5E45;
+  font-size: 16px;
+}
+.onlineShop .productArea li button:last-child .cartIcon {
+  font-size: 16px;
+  vertical-align: text-bottom;
+  font-variation-settings: "FILL" 1;
+}
+.onlineShop .productArea li button.cartChecked {
+  background-color: #FF5E45;
+  color: white;
+}
+.onlineShop .productArea li button.cartChecked .cartIcon {
+  color: white;
+}
+.onlineShop .productArea li h2, .onlineShop .productArea li h3 {
+  line-height: 1.5;
+}
+.onlineShop .productArea li h3 {
+  font-size: 12px;
+}
+.onlineShop .productArea li h3::after {
+  content: "";
+  width: 91px;
+  height: 1px;
+  background: #3D1101;
+}
+.onlineShop .productArea li b {
+  font-weight: 700;
+}
+.onlineShop .productArea li img {
+  width: 100%;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
+@media (max-width: 576px) {
+  .onlineShop .searchCart .searchBox {
+    width: 100%;
+  }
+  .onlineShop .productArea {
+    width: 100%;
+  }
+  .onlineShop .productArea li {
+    max-width: 100%;
+  }
+}
+
+/*FAVORITE ICON*/
+.favoriteIcon {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  height: auto;
+  background: transparent;
+}
+.favoriteIcon > span {
+  color: white;
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 200;
+}
+
+/*TOGGLE FAVORITE ICON*/
+.favoriteChecked.favoriteIcon > span {
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200;
+}
+
+/*TOP SALE ICON*/
+.ribbon {
+  position: absolute;
+  top: 14px;
+  right: -35px;
+  width: 120px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  color: white;
+  transform: rotate(45deg);
+  background-image: linear-gradient(315deg, transparent 40%, #00CC99 20%, #00CC99 80%, transparent 80%), linear-gradient(45deg, transparent 40%, #00CC99 40%, #00CC99 80%, transparent 80%);
+}
+.ribbon::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 0px;
+  transform: rotate(-45deg);
+  display: block;
+  border-style: solid;
+  border-width: 0 6px 6px;
+  border-color: transparent transparent #00AA88 transparent;
+}
+.ribbon::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  right: 0px;
+  transform: rotate(45deg);
+  display: block;
+  border-style: solid;
+  border-width: 0 6px 6px;
+  border-color: transparent transparent #00AA88 transparent;
+}
+
+/*HOVER*/
+.hoverScale:hover, .hoverScale:active {
+  transform: scale(1.05);
+}
+
+.listBG:hover, .listBG:active {
+  background: #3D1101;
+  color: white;
+}/*# sourceMappingURL=RWD_final.css.map */
