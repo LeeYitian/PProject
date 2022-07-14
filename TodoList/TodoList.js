@@ -24,32 +24,30 @@ tab.addEventListener("click", changeTab);
 //刪除所有已完成項目
 removeDone.addEventListener("click", removeDoneItem);
 
-let todolist = JSON.parse(localStorage.getItem("todolist"))|| [];
+let todolist = JSON.parse(localStorage.getItem("todolist")) || [];
 let allClassName = allList.classList;
 let undoClassName = undoList.classList;
 let doneClassName = doneList.classList;
+let listStatus = "all"; //參考別人的作法，巧妙的一手：將這個變數當作書籤一樣，判斷現在的tab
 
 function render(list){
     let str = "";
     list.forEach(function (i) {
-        str += `<li><input id="doneCheck" type="checkbox" class="checkbox" data-order="${todolist.indexOf(i)}" data-place="${i.place}" ${i.status}><label for="doneCheck">${i.value}</label><button data-order="${todolist.indexOf(i)}" data-place="${i.place}"></button></li>`;
+        str += `<li><input id="doneCheck" type="checkbox" class="checkbox" data-order="${todolist.indexOf(i)}" ${i.status}><label for="doneCheck">${i.value}</label><button data-order="${todolist.indexOf(i)}"></button></li>`;
     });
     listContent.innerHTML = str;
     countRemain();
 };
 render(todolist);
 
-function createListContent(e) {
-    if (e.target === undoList || e.target.dataset.place === "undo") {
+function createListContent() {
+    if (listStatus === "undo") {
         let tempTodoList = todolist.filter(i=>i.status !== "checked");
-        tempTodoList.forEach(i=>i.place = "undo");
         render(tempTodoList);
-    } else if (e.target === doneList || e.target.dataset.place === "done") {
+    } else if (listStatus === "done") {
         let tempTodoList = todolist.filter(i=>i.status === "checked");
-        tempTodoList.forEach(i=>i.place = "done");
         render(tempTodoList);
     } else {
-        todolist.forEach(i=>i.place = "all");
         render(todolist);
         allClassName.add("active");
         undoClassName.remove("active");
@@ -74,9 +72,8 @@ function addList(e) {
         let obj = {};
         obj.value = addListInput.value;
         obj.status = "";
-        obj.place = "all";
         todolist.unshift(obj);
-        createListContent(e);
+        createListContent();
         addListInput.value = "";
     };
 };
@@ -87,14 +84,13 @@ function checkList(e) {
     };
     //刪除指定項目
     if (e.target.nodeName === "BUTTON") {
-        // console.log(e);
-        todolist.splice(e.target.dataset.order, 1);
-        createListContent(e);
+        todolist.splice(e.target.dataset.order, 1); //.splice(index number, 數量)
+        createListContent();
     } else {
         //更改項目status
         // checkbox有checked property可用
         todolist[e.target.dataset.order].status = e.target.checked?"checked":"";
-        createListContent(e);
+        createListContent();
     };
 };
 
@@ -103,21 +99,24 @@ function changeTab(e) {
         allClassName.add("active");
         undoClassName.remove("active");
         doneClassName.remove("active");
+        listStatus = "all";
     } else if (e.target === undoList) {
         allClassName.remove("active");
         undoClassName.add("active");
         doneClassName.remove("active")
+        listStatus = "undo"
     } else if (e.target === doneList) {
         allClassName.remove("active");
         undoClassName.remove("active");
         doneClassName.add("active");
+        listStatus = "done";
     };
-    createListContent(e);
+    createListContent();
 };
 
-function removeDoneItem(e) {
+function removeDoneItem() {
     todolist = todolist.filter(i=>i.status === "");
-    createListContent(e);
+    createListContent();
     allClassName.add("active");
     undoClassName.remove("active");
     doneClassName.remove("active");

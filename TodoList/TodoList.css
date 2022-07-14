@@ -38,6 +38,9 @@ table {
     border-spacing: 0;
 }
 
+/* CSS RESET END */
+
+/* MAIN CSS START */
 
 * {
     box-sizing: border-box;
@@ -48,16 +51,16 @@ table {
 }
 
 .wrap {
-    min-height: 100vh;
-    min-width: 100vh;
-    background: linear-gradient(174deg, #FFD370 2%, #FFD370 46%, #FFF 46%, #FFF 100%);
+    /* min-height: 100vh; */
+    /* min-width: 100vh; */
+    background: linear-gradient(174deg, #ff9bab 2%, #FFD370 46%, #FFF 46%, #FFF 100%);
     padding-top: 48px;
 }
 
 h1 {
     font-family: "Baloo Tamma 2";
     font-weight: bold;
-    color: #333333;
+    color: #170058;
     letter-spacing: 8.75px;
     font-size: 48px;
     text-align: center;
@@ -65,15 +68,15 @@ h1 {
 
 .add {
     position: relative;
-    width: 500px;
+    max-width: 500px;
     margin: 24px auto 8px;
 }
 
 
 input[name="addList"] {
-    width: 500px;
+    width: 100%;
     height: 48px;
-    padding: 12px 24px 12px;
+    padding: 12px 44px 12px 24px;
     font-size: 16px;
     border-radius: 10px;
     border: none;
@@ -90,8 +93,8 @@ input[name="addList"]::placeholder {
 input[name="addList"]+button {
     position: absolute;
     top: 4px;
-    left: 456px;
-    background: #333333;
+    right: 4px;
+    background: #170058;
     padding: 0;
     width: 40px;
     height: 40px;
@@ -111,7 +114,7 @@ input[name="addList"]+button:hover {
 }
 
 .list {
-    width: 500px;
+    max-width: 500px;
     background: #FFF;
     border-radius: 10px;
     margin: auto;
@@ -140,11 +143,11 @@ input[name="addList"]+button:hover {
 
 li.active {
     color: #333333;
-    border-bottom: 2px solid #333333;
+    border-bottom: 2px solid #170058;
 }
 .tab>li:hover{
     color: #333333;
-    border-bottom: 2px solid #333333;
+    border-bottom: 2px solid #170058;
 }
 
 .listContent {
@@ -166,7 +169,7 @@ li.active {
     font-family: "NotoSansCJKtc";
     font-size: 16px;
     line-height: 56px;
-    color: #333333;
+    color: #170058;
     letter-spacing: 0.62px;
 }
 
@@ -205,7 +208,7 @@ label::before {
     height: 20px;
     width: 20px;
     border-radius: 5px;
-    border: 1px solid #333333;
+    border: 1px solid #170058;
     pointer-events: none;
     transition: 0.3s ease;
 }
@@ -219,8 +222,8 @@ label::after {
     height: 15px;
     width: 0.5rem;
     border-radius: 1px;
-    border-bottom: 3px solid #FFD370;
-    border-right: 3px solid #FFD370;
+    border-bottom: 3px solid #ff9bab;
+    border-right: 3px solid #ff9bab;
     pointer-events: none;
     opacity: 0;
     transition: 0.3s ease;
@@ -269,4 +272,20 @@ label::after {
 .remove:hover{
     color: #333333;
     transform: scale(1.1);
+}
+@media (max-width: 575px){
+    h1{
+        font-size: 38px;
+    }
+    .add{
+        width: 95%;
+    }
+    .list{
+        width: 95%;
+    }
+    .listContent{
+        padding-right: 8px;
+        padding-left: 16px;
+    }
+    
 }
