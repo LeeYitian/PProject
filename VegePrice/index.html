@@ -35,13 +35,13 @@
                 <p>查看未指定項目比價結果</p>
                 <div class="select-custom">
                     <div class="select-custom-selected">排序<span>篩選</span></div>
-                    <div class="select-custom-option">
-                        <div data-property="上價"><span>依</span>上價<span>排序</span></div>
-                        <div data-property="中價"><span>依</span>中價<span>排序</span></div>
-                        <div data-property="下價"><span>依</span>下價<span>排序</span></div>
-                        <div data-property="平均價"><span>依</span>平均價<span>排序</span></div>
-                        <div data-property="交易量"><span>依</span>交易量<span>排序</span></div>
-                    </div>
+                    <ul class="select-custom-option">
+                        <li data-property="上價"><span>依</span>上價<span>排序</span></li>
+                        <li data-property="中價"><span>依</span>中價<span>排序</span></li>
+                        <li data-property="下價"><span>依</span>下價<span>排序</span></li>
+                        <li data-property="平均價"><span>依</span>平均價<span>排序</span></li>
+                        <li data-property="交易量"><span>依</span>交易量<span>排序</span></li>
+                    </ul>
                 </div>
             </div>
             <table>
@@ -49,11 +49,11 @@
                     <tr>
                         <th>作物<span>名稱</span></th>
                         <th>市場<span>名稱</span</th>
-                        <th>上價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="上價"></i><i class="fa-solid fa-caret-down" data-property="上價"></i></span></th>
-                        <th>中價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="中價"></i><i class="fa-solid fa-caret-down" data-property="中價"></i></span></th>
-                        <th>下價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="下價"></i><i class="fa-solid fa-caret-down" data-property="下價"></i></span></th>
-                        <th>平均價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="平均價"></i><i class="fa-solid fa-caret-down" data-property="平均價"></i></span></th>
-                        <th>交易量<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="交易量"></i><i class="fa-solid fa-caret-down" data-property="交易量"></i></span></th>
+                        <th data-option="0">上價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="上價"></i><i class="fa-solid fa-caret-down" data-property="上價"></i></span></th>
+                        <th data-option="1">中價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="中價"></i><i class="fa-solid fa-caret-down" data-property="中價"></i></span></th>
+                        <th data-option="2">下價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="下價"></i><i class="fa-solid fa-caret-down" data-property="下價"></i></span></th>
+                        <th data-option="3">平均價<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="平均價"></i><i class="fa-solid fa-caret-down" data-property="平均價"></i></span></th>
+                        <th data-option="4">交易量<span class="table-arrow"><i class="fa-solid fa-caret-up" data-property="交易量"></i><i class="fa-solid fa-caret-down" data-property="交易量"></i></span></th>
                     </tr>
                 </thead>
                 <tbody>
