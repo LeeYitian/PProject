@@ -189,7 +189,7 @@ main {
   font-size: 18px;
 }
 .selectFilterArea .select-custom-selected,
-.selectFilterArea .select-custom-option > div {
+.selectFilterArea .select-custom-option > li {
   padding: 8px 25px 8px 16px;
 }
 .selectFilterArea .select-custom {
@@ -219,7 +219,7 @@ main {
   top: 34px;
   z-index: 100;
 }
-.selectFilterArea .select-custom-option > div {
+.selectFilterArea .select-custom-option > li {
   border-bottom: 1px solid #F4F1EA;
   -webkit-user-select: none;
      -moz-user-select: none;
