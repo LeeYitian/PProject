@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name='description' content='線上待辦清單，輕鬆管理工作與時間' />
+    <meta property="og:title" content="最實用的線上待辦清單服務Online Todo List" />
+    <meta property="og:description" content="簡簡單單條列清單，輕輕鬆鬆管理時間"/>
+    <meta property="og:type" content='website' />
+    <meta property="og:url" content="https://leeyitian.github.io/Practice-Project/Todo_API/Todo_index.html" />
+    <meta property="og:image" content="https://blush.design/api/download?shareUri=DugLy0GEGxDeLtkJ&c=Hair_0%7Effc943-0.2%7E0f0f0f_Skin_0%7Ef6cbc3-0.2%7Eecafa3&w=800&h=800&fm=png" />
+    
+    <link rel="stylesheet" href="/css/Todo_All.css">
+    <title>最實用的線上待辦清單服務 Online Todo List</title>
+</head>
+<body>
+    <div class="mainWrap">
+        <header class="mainContainer">
+            <h1><a href="#">ONLINE TODO LIST</a><a href="#">ONLINE TODO LIST</a></h1>
+            <div class="logoutArea">
+                <h2>○○○的待辦</h2>
+                <button type="submit">登出</button>
+            </div>
+        </header>
+        <main class="mainContainer">
+            <div class="inputArea"><input type="text" placeholder="新增待辦事項"><button type="button"></button></div>
+            <div class="emptyArea">
+                <p>目前尚無待辦事項</p>
+                <img src="/img/empty.png" alt="無待辦事項的插圖">
+            </div>
+            <div class="listArea">
+                <ul class="tab">
+                    <li class="active">全部</li>
+                    <li>待完成</li>
+                    <li>已完成</li>
+                </ul>
+                <section class="listContent">
+                    <ul class="list">
+                        <!-- <li><input type="checkbox" id="checkList"><label for="checkList">blahblah</label><button type="button"></button></li>
+                        <li><input type="checkbox" id="checkList1"><label for="checkList1">blahblah</label><button type="button"></button></li> -->
+                    </ul>
+                    <div class="listFooter">
+                        <h3>0個待完成項目</h3>
+                        <button type="button">清除已完成項目</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/Todo_All.js"></script>
+</body>
+</html>

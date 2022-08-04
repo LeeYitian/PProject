@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name='description' content='線上待辦清單，輕鬆管理工作與時間' />
+    <meta property="og:title" content="最實用的線上待辦清單服務Online Todo List" />
+    <meta property="og:description" content="簡簡單單條列清單，輕輕鬆鬆管理時間"/>
+    <meta property="og:type" content='website' />
+    <meta property="og:url" content="https://leeyitian.github.io/Practice-Project/Todo_API/Todo_index.html" />
+    <meta property="og:image" content="https://blush.design/api/download?shareUri=DugLy0GEGxDeLtkJ&c=Hair_0%7Effc943-0.2%7E0f0f0f_Skin_0%7Ef6cbc3-0.2%7Eecafa3&w=800&h=800&fm=png" />
+    
+    <link rel="stylesheet" href="/css/Todo_All.css">
+    <title>最實用的線上待辦清單服務 Online Todo List 登入／註冊</title>
+</head>
+<body>
+    <div class="indexWrap">
+        <div class="indexContainer">
+            <div class="title">
+                <h1><a href="#">Online Todo List</a><a href="#">ONLINE TODO LIST</a></h1>
+                <img src="/img/main.png" alt="待辦事項插圖">
+            </div>
+            <section class="login">
+                <h2>最實用的線上待辦事項服務</h2>
+                <form>
+                    <label for="ID">Email</label><input type="email" id="ID" placeholder="請輸入Email"  required>
+                    <label for="nickName">您的暱稱</label><input type="text" id="nickName" placeholder="請輸入您的暱稱" title="中英皆可">
+                    <label for="PWD">密碼</label><input type="password" id="PWD" placeholder="請輸入密碼" title="密碼為6個字元以上" required>
+                    <p class="PWD"></p>
+                    <label for="PWDAgain">再次輸入密碼</label><input type="password" id="PWDAgain" placeholder="請再次輸入密碼" title="密碼為6個字元以上">
+                    <p class="PWDAgain"></p>
+                <button type="submit">登入</button>
+            </form>
+                <a href="#" title="註冊帳號">註冊帳號</a>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/Todo_All.js"></script>
+</body>
+</html>
