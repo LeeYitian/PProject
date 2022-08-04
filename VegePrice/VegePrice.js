@@ -1,3 +1,5 @@
+//二次最大改動：點選表頭排序時下拉選單的內容也會更換。改變selected()、在sortData()中加入selected()
+
 // 模擬下拉選單功能
 // 打開下拉選單
 const selectFilter = document.querySelector(".select-custom-selected");
@@ -9,14 +11,28 @@ const selectOption = document.querySelectorAll(".select-custom-option>div");
 selectOption.forEach(item => {
     item.addEventListener("click", selected);
 })
+// 更換下拉選單選擇內容：大範圍監聽的方法
+// const selectOption = document.querySelector(".select-custom-option");
+// selectOption.addEventListener("click",selected);
+// 把這行加進selected()裡面：let text = e.target.nodeName === "LI"?e.target.innerHTML:e.target.parentNode.innerHTML;
 
 function selected(e) {
     // console.log(e.target.innerHTML)
     // console.log(e.currentTarget.innerHTML)
-    selectFilter.innerHTML = e.currentTarget.innerHTML;
+    switch(e.currentTarget.nodeName){
+        case "LI":
+            selectFilter.innerHTML = e.currentTarget.innerHTML;
+            break;
+        case "TH":
+            selectFilter.innerHTML = selectOption[e.currentTarget.dataset.option].innerHTML;
+            break;
+        // case "I":
+        //     selectFilter.innerHTML = selectOption[e.target.parentNode.dataset.option].innerHTML;
+        //     break;
+    }
+    // selectFilter.innerHTML = e.currentTarget.innerHTML;
     selectMenu.classList.remove("openMenu");
 }
-
 
 // 顯示目前搜尋內容
 const input = document.querySelector(".searchArea input");
@@ -174,7 +190,17 @@ function sortData(e) {
             if (i.dataset.property === sortBy) {
                 i.classList.add("filterSelect");
             };
-        })
+        });
+      
+        // let option;
+        // selectOption.forEach((i) => {
+        //     if (i.dataset.property === sortBy) {
+        //         option = i.innerHTML;
+        //     }
+        // })
+        // selectFilter.innerHTML = option;
+      
+        selected(e);
         return;
     }
     if (e.target.nodeName === "TH") {
@@ -197,7 +223,17 @@ function sortData(e) {
         if (i.dataset.property === sortBy) {
             i.classList.add("filterSelect");
         };
-    })
+    });
+  
+    // let option;
+    // selectOption.forEach((i) => {
+    //     if (i.dataset.property === sortBy) {
+    //         option = i.innerHTML;
+    //     }
+    // })
+    // selectFilter.innerHTML = option;
+  
+    selected(e);
 
 }
 
