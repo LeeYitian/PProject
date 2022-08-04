@@ -157,7 +157,7 @@ label {
 .title a:first-of-type {
   width: 40px;
   height: 40px;
-  background-image: url("/img/checkBox.svg");
+  background-image: url("./img/checkBox.svg");
   background-size: contain;
 }
 .title a:last-of-type {
@@ -288,7 +288,7 @@ header a {
 header a:first-of-type {
   width: 33px;
   height: 33px;
-  background-image: url("/img/checkBox.svg");
+  background-image: url("./img/checkBox.svg");
   background-size: contain;
 }
 header a:last-of-type {
@@ -345,7 +345,7 @@ main {
   height: 40px;
   width: 40px;
   padding: 10px;
-  background-image: url("/img/plus.png");
+  background-image: url("./img/plus.png");
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -420,7 +420,7 @@ main {
   color: #9F9A91;
 }
 .listContent input[type=checkbox]:checked + label::before {
-  content: url("/img/checkYellow.png");
+  content: url("./img/checkYellow.png");
   border: 1px solid transparent;
   transform: translateY(-80%);
 }
@@ -441,7 +441,7 @@ main {
   cursor: pointer;
 }
 .listContent label + button {
-  background: url("/img/cross.png");
+  background: url("./img/cross.png");
   background-repeat: no-repeat;
   background-position: center center;
   position: absolute;
