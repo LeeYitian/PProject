@@ -163,7 +163,7 @@ main {
     }
 
     .select-custom-selected,
-    .select-custom-option>div {
+    .select-custom-option>li {
         padding: 8px 25px 8px 16px;
 
     }
@@ -200,7 +200,7 @@ main {
         top: 34px;
         z-index: 100;
 
-        >div {
+        > {
             border-bottom: 1px solid $grey;
             user-select: none;
         }
