@@ -14,6 +14,7 @@ let domain = "https://todoo.5xcamp.us";
 let url = "";
 let APIData = {};
 let listData = [];
+let tabStatus = "all";
 //新增資料用
 const addBTN = document.querySelector(".inputArea button");
 const addInput = document.querySelector(".inputArea input");
@@ -133,17 +134,17 @@ function loginRegister(e) {
             Swal.fire({
                 icon: 'success',
                 title: r.data.message,
-                text: `${r.data.nickname}你好！`
+                text: `${r.data.nickname}，你好！`
             }).then(() => window.location = "/Todo_main.html");
             // console.log(token);
         }).catch((e) => {
             // console.log(e);
-            let reason = e.response.data.error ? e.response.data.error : "";
+            // let reason = e.response.data.error ? e.response.data.error : "";
             // alert(e.response.data.message + "　" + reason);
             Swal.fire({
                 icon: 'error',
                 title: e.response.data.message,
-                text: reason,
+                text: '請檢查是否有拼字錯誤，或註冊新帳號',
             })
         })
 }
@@ -191,6 +192,7 @@ function requestData() {
         render(listData);
     }).catch((e) => {
         // console.log("requestData",e);
+        // let reason = e.response.data.error ? e.response.data.error : "";
         // alert(e.response.data.message + "　" + reason);
         Swal.fire({
             icon: 'warning',
@@ -210,17 +212,24 @@ function render(data) {
     } else {
         emptyArea.classList.remove("show");
         listArea.classList.add("show");
+
         let tempList = [];
-        //判斷tab並篩選要渲染的內容
-        switch (detectTab()) {
-            case "全部":
+        //判斷tab並篩選要渲染的內容（含tab樣式）
+        tabArea.childNodes.forEach((i) => {
+            if (i.nodeName === "LI") i.classList.remove("active");
+        })
+        switch (tabStatus) {
+            case "all":
                 tempList = data;
+                tabArea.children[0].classList.add("active");
                 break;
-            case "待完成":
+            case "undo":
                 tempList = data.filter(i => !i.completed_at);
+                tabArea.children[1].classList.add("active");
                 break;
-            case "已完成":
+            case "done":
                 tempList = data.filter(i => i.completed_at);
+                tabArea.children[2].classList.add("active");
                 break;
         }
         const list = document.querySelector(".list");
@@ -233,14 +242,14 @@ function render(data) {
         countRemain(data);
     }
 }
-function detectTab() {
-    let tab = "";
-    tabArea.childNodes.forEach((i) => {
-        if (i.nodeName === "LI" && i.classList.contains("active")) {
-            tab = i.textContent
-        }
+//計算個數
+function countRemain(data) {
+    let total = 0;
+    data.forEach(i => {
+        if (!i.completed_at) total++;
     })
-    return tab;
+    const remain = document.querySelector(".listFooter h3");
+    remain.textContent = `${total}個待完成項目`;
 }
 
 //新增待辦事項
@@ -254,6 +263,7 @@ function addListItem(e) {
                 "content": inputText
             }
         };
+        
         axios.post(url, APIData, {
             headers: {
                 Authorization: sessionStorage.getItem("token")
@@ -269,10 +279,7 @@ function addListItem(e) {
             }
             listData.unshift(newData);
             //為了在渲染的時候顯示全部的內容
-            tabArea.childNodes.forEach((i) => {
-                if (i.nodeName === "LI") i.classList.remove("active");
-                if (i.textContent === "全部") i.classList.add("active");
-            })
+            tabStatus = "all";
             render(listData);
         }).catch((e) => {
             // console.log("addListItem", e.response);
@@ -315,7 +322,7 @@ function itemStatus(e) {
         }
     }).then((r) => {
         // console.log("itemStatus", r);
-        //等重新請求的時候listData再同步資料庫中的時間戳記就可以了
+        // 等重新請求的時候listData再同步資料庫中的時間戳記就可以了
         // if (r.config.method === "patch") {
         //     index = listData.findIndex(i => i.id === r.data.id);
         //     listData[index].completed_at = r.data.completed_at;
@@ -326,15 +333,6 @@ function itemStatus(e) {
         alert(e.response.data.message + "　" + reason);
     })
 
-}
-//計算個數
-function countRemain(data) {
-    let total = 0;
-    data.forEach(i => {
-        if (!i.completed_at) total++;
-    })
-    const remain = document.querySelector(".listFooter h3");
-    remain.textContent = `${total}個待完成項目`;
 }
 
 //刪除所有已完成
@@ -356,10 +354,7 @@ function deleteAll() {
     //先直接更新已請求過的資料並渲染
     listData = listData.filter(i => !i.completed_at);
     //為了在渲染的時候顯示全部的內容
-    tabArea.childNodes.forEach((i) => {
-        if (i.nodeName === "LI") i.classList.remove("active");
-        if (i.textContent === "全部") i.classList.add("active");
-    })
+    tabStatus = "all";
     render(listData);
 
     Promise.all(needDelete)
@@ -377,18 +372,15 @@ function deleteAll() {
 
 //切換tab
 function changeTab(e) {
-    for (let i = 0; i < this.children.length; i++) {
-        this.children[i].classList.remove("active");
-    };
     switch (e.target.textContent) {
         case "全部":
-            e.target.classList.add("active");
+            tabStatus = "all";
             break;
         case "待完成":
-            e.target.classList.add("active");
+            tabStatus = "undo";
             break;
         case "已完成":
-            e.target.classList.add("active");
+            tabStatus = "done";
             break;
         default:
             return;
