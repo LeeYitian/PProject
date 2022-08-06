@@ -1,4 +1,4 @@
-//二次最大改動：點選表頭排序時下拉選單的內容也會更換。改變selected()、在sortData()中加入selected()
+//二次最大改動：點選表頭排序時下拉選單的內容也會更換。改變selected()、在sortData()中加入selected();tableHead、selectOption改成大範圍監聽，搭配.closest()的使用。
 
 // 模擬下拉選單功能
 // 打開下拉選單
@@ -7,24 +7,24 @@ const selectMenu = document.querySelector(".select-custom");
 selectFilter.addEventListener("click", () => selectMenu.classList.toggle("openMenu"));
 
 // 更換下拉選單選擇的內容
-const selectOption = document.querySelectorAll(".select-custom-option>div");
-selectOption.forEach(item => {
-    item.addEventListener("click", selected);
-})
+// const selectOption = document.querySelectorAll(".select-custom-option>div");
+// selectOption.forEach(item => {
+//     item.addEventListener("click", selected);
+// })
+
 // 更換下拉選單選擇內容：大範圍監聽的方法
-// const selectOption = document.querySelector(".select-custom-option");
-// selectOption.addEventListener("click",selected);
-// 把這行加進selected()裡面：let text = e.target.nodeName === "LI"?e.target.innerHTML:e.target.parentNode.innerHTML;
+const selectOption = document.querySelector(".select-custom-option");
+selectOption.addEventListener("click",selected);
 
 function selected(e) {
     // console.log(e.target.innerHTML)
     // console.log(e.currentTarget.innerHTML)
     switch(e.currentTarget.nodeName){
-        case "LI":
-            selectFilter.innerHTML = e.currentTarget.innerHTML;
+        case "UL":
+            selectFilter.innerHTML = e.target.closest("li").innerHTML;
             break;
-        case "TH":
-            selectFilter.innerHTML = selectOption[e.currentTarget.dataset.option].innerHTML;
+        case "THEAD":
+            selectFilter.innerHTML = selectOption.children[e.target.closest("th").dataset.option].innerHTML;
             break;
         // case "I":
         //     selectFilter.innerHTML = selectOption[e.target.parentNode.dataset.option].innerHTML;
@@ -170,16 +170,23 @@ function renderData(data) {
 
 
 // 排序資料
-selectOption.forEach(i => i.addEventListener("click", sortData))
-const tableHead = document.querySelectorAll("thead th");
-tableHead.forEach(i => i.addEventListener("click", sortData));
+selectOption.forEach(i => i.addEventListener("click", sortData));
+
+// const tableHead = document.querySelectorAll("thead th");
+// tableHead.forEach(i => i.addEventListener("click", sortData));
+//改成大範圍監聽：
+const tableHead = document.querySelector("thead");
+tableHead.addEventListener("click", sortData);
 
 function sortData(e) {
     // upArrows.forEach(i=>i.classList.remove("filterSelect"));
     // console.log(e.target)
     // console.log(e.currentTarget)
+    
+    if(e.currentTarget.nodeName ==="THEAD" && (e.target.closest("th").textContent === "市場名稱"||e.target.closest("th").textContent ==="作物名稱"))return;
+    
     downArrows.forEach(i=>i.classList.remove("filterSelect"));
-    let sortBy = (e.currentTarget.nodeName !== "TH") ? e.currentTarget.dataset.property : e.currentTarget.textContent;
+    let sortBy = (e.currentTarget.nodeName !== "THEAD") ? e.target.closest("li").dataset.property : e.target.closest("th").textContent;
 
     if (e.target.className.includes("down")) {
         searchData.sort((item1, item2) => item1[sortBy] - item2[sortBy]);
