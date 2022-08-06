@@ -170,7 +170,7 @@ function renderData(data) {
 
 
 // 排序資料
-selectOption.forEach(i => i.addEventListener("click", sortData));
+selectOption.addEventListener("click", sortData);
 
 // const tableHead = document.querySelectorAll("thead th");
 // tableHead.forEach(i => i.addEventListener("click", sortData));
