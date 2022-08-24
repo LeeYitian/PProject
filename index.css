@@ -70,6 +70,11 @@ html {
   font-family: "Noto Sans TC", sans-serif;
   font-size: 16px;
 }
+@media (max-width: 376px) {
+  html {
+    font-size: 12px;
+  }
+}
 
 body {
   background: #AACDBE;
@@ -101,14 +106,8 @@ body {
   background: #F38181;
   border-radius: 50%;
   margin: 8px;
-  -webkit-animation-name: load;
-          animation-name: load;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
+  -webkit-animation: load 0.5s infinite alternate;
+          animation: load 0.5s infinite alternate;
 }
 .loader .dot:nth-of-type(2n) {
   background: #FBC687;
@@ -145,15 +144,9 @@ body {
   margin-bottom: 10px;
   white-space: nowrap;
   transform: rotate(150deg) translateX(0);
-  transform-origin: 59% -71%;
-  -webkit-animation-name: move;
-          animation-name: move;
-  -webkit-animation-duration: 6s;
-          animation-duration: 6s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  transform-origin: 900px -15px;
+  -webkit-animation: move 6s infinite linear;
+          animation: move 6s infinite linear;
 }
 .background .bg_row:nth-child(2n) {
   animation-direction: reverse;
@@ -163,7 +156,7 @@ body {
   width: 80px;
   height: 40px;
   margin: 5px;
-  border: 3px solid rgba(252, 227, 138, 0.6);
+  border: 3px solid rgba(252, 227, 138, 0.7);
 }
 @-webkit-keyframes move {
   100% {
@@ -175,12 +168,20 @@ body {
     transform: rotate(150deg) translateX(270px);
   }
 }
+@media (max-width: 376px) {
+  .background .bg_row {
+    transform-origin: 900px -115px;
+  }
+}
 
 .wrap {
+  position: relative;
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
-  outline: 1px solid;
+  display: none;
+  opacity: 0;
+  transition: 1s;
 }
 
 .title {
@@ -192,28 +193,80 @@ body {
   font-size: 3.5rem;
   letter-spacing: 0.25rem;
   color: #F4F7C5;
-  text-shadow: 1px 1px 0 darkgray;
+  text-shadow: 1px 1px 50px rgba(211, 211, 211, 0.3);
 }
 .title::before {
   content: "";
   display: block;
-  width: 70px;
+  width: 60px;
   height: 600px;
   background: #F38181;
+  border-radius: 10px;
   position: absolute;
-  top: -55px;
-  left: -30px;
+  top: -655px;
+  left: -20px;
   z-index: -1;
+  -webkit-animation: slideDown 1.5s 0.5s forwards;
+          animation: slideDown 1.5s 0.5s forwards;
+}
+@-webkit-keyframes slideDown {
+  100% {
+    top: -55px;
+  }
+}
+@keyframes slideDown {
+  100% {
+    top: -55px;
+  }
+}
+@media (max-width: 950px) {
+  .title {
+    -ms-writing-mode: lr-tb;
+        writing-mode: horizontal-tb;
+  }
+  .title span {
+    display: block;
+  }
+  .title::before {
+    width: 350px;
+    height: 80px;
+    top: -10px;
+    left: -400px;
+  }
+  @-webkit-keyframes slideDown {
+    100% {
+      left: -50px;
+    }
+  }
+  @keyframes slideDown {
+    100% {
+      left: -50px;
+    }
+  }
+}
+
+.intro {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: 0.25em;
+  color: #F38181;
+  text-align: right;
+  text-shadow: 2px 2px 1px rgba(211, 211, 211, 0.8);
 }
 
 nav {
   position: fixed;
   top: 0;
   bottom: 0;
+  z-index: 3;
   right: -300px;
   background: #FCE38A;
   width: 300px;
   font-size: 1.5rem;
+  transition: 0.5s;
 }
 nav::before {
   content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMzAiIGhlaWdodD0iMzAiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgZmlsbD0iIzY2NjY2NiI+PHBhdGggZD0iTTAsMjUuOHYxNy4yaDE3MnYtMTcuMnpNMCw3Ny40djE3LjJoMTcydi0xNy4yek0wLDEyOXYxNy4yaDE3MnYtMTcuMnoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==");
@@ -226,11 +279,21 @@ nav::before {
   background: #FCE38A;
   position: absolute;
   top: 30px;
-  left: -50px;
+  left: -48px;
   cursor: pointer;
 }
+@media (max-width: 376px) {
+  nav {
+    width: 200px;
+    right: -200px;
+  }
+}
+nav.show {
+  right: 0;
+}
 nav ul {
-  padding: 20px;
+  height: 100%;
+  padding: 30px 20px 20px;
   text-align: right;
 }
 nav li {
@@ -242,17 +305,31 @@ nav li {
   min-height: 100vh;
   display: flex;
   justify-content: flex-end;
-  padding-top: 180px;
-  padding-bottom: 30px;
+  align-items: flex-end;
+  padding: 0 50px 5% 0;
 }
 .project_list .project_item {
-  width: 35%;
+  width: 30%;
   min-width: 350px;
-  margin: 0 2% 0 2%;
+  margin: 0 2%;
   background: #FBC687;
   border-radius: 10px;
-  padding: 15px;
+  padding: 8px;
   box-shadow: 1px 1px 10px 1px darkgray;
+  -webkit-animation: slideUp 1.5s 0.5s forwards;
+          animation: slideUp 1.5s 0.5s forwards;
+  position: relative;
+  bottom: -300px;
+}
+@-webkit-keyframes slideUp {
+  to {
+    bottom: 0;
+  }
+}
+@keyframes slideUp {
+  to {
+    bottom: 0;
+  }
 }
 .project_list img {
   width: 100%;
@@ -278,6 +355,43 @@ nav li {
 .project_list ul {
   border-radius: 0 0 10px 10px;
   height: calc(100% - 260px);
+}
+.project_list ul li {
+  padding: 10px;
+  font-size: 1.25rem;
+  font-weight: 100;
+}
+@media (max-width: 950px) {
+  .project_list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50% 0 30px 0;
+    max-height: 100vh;
+    overflow-y: scroll;
+  }
+  .project_list .project_item {
+    min-width: 80%;
+    margin: 0 0 2%;
+  }
+  .project_list img {
+    -o-object-position: top;
+       object-position: top;
+  }
+}
+@media (max-width: 376px) {
+  .project_list {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-bottom: 30px;
+    overflow-y: visible;
+    overflow-x: scroll;
+  }
+  .project_list .project_item {
+    min-width: 290px;
+    margin: 0 2%;
+  }
 }
 
 td,
