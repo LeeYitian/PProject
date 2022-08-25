@@ -14,34 +14,35 @@
         <h1 class="title"><span>李依恬</span>個人作品集</h1>
         <nav>
             <ul>
-                <li><a href="#" title="主要作品">主要作品</a></li>
+                <li><a href="#main_project" title="主要作品">主要作品</a></li>
                 <li><a href="#resume" title="個人簡歷">個人簡歷</a></li>
-                <li><a href="#" title="其他網頁作品">其他網頁作品</a></li>
-                <li><a href="#" title="教學作品集">教學設計作品</a></li>
+                <li><a href="#other_project" title="其他作品">其他作品</a></li>
             </ul>
         </nav>
         <main>
-            <section class="project_list">
+            <section id="main_project" class="project flex">
                 <p class="intro">一開始只是對數位教學工具好奇<br>「我也想做出這些工具......」<br><strong>後來卻忍不住，踏上了轉職之路！</strong></p>
-                <article class="project_item"><img src="img/api.jpg" alt="作品縮圖">
-                    <h2><a href="#" title="API_AJAX_RWD">線上待辦清單</a></h2>
-                    <ul>
-                        <li>API：登入登出、獲取使用者資料</li>
-                        <li>JS：跳轉頁面、第三方套件等</li>
-                        <li>RWD響應式、flex排版</li>
-                    </ul>
-                </article>
-                <article class="project_item"><img src="img/ajax.jpg" alt="作品縮圖">
-                    <h2><a href="#" title="API_AJAX_RWD">農產品價格比較</a></h2>
-                    <ul>
-                        <li>AJAX：載入資料渲染表格</li>
-                        <li>JS：事件委託、陣列方法（map, sort, filter...）等
-                        </li>
-                        <li>RWD響應式、flex排版</li>
-                    </ul>
-                </article>
+                <div class="project_list flex">
+                    <article class="project_item"><a href="TodoList_API/Todo_index.html" target="_blank"><img src="img/api.jpg" alt="作品縮圖"></a>
+                        <h2><a href="TodoList_API/Todo_index.html" target="_blank">線上待辦清單</a></h2>
+                        <ul>
+                            <li>API：登入登出、獲取使用者資料</li>
+                            <li>JS：跳轉頁面、第三方套件等</li>
+                            <li>RWD響應式、flex排版</li>
+                        </ul>
+                    </article>
+                    <article class="project_item"><a href="/VegePrice/index.html" target="_blank"><img src="img/ajax.jpg" alt="作品縮圖"></a>
+                        <h2><a href="/VegePrice/index.html" target="_blank">農產品價格比較</a></h2>
+                        <ul>
+                            <li>AJAX：載入資料渲染表格</li>
+                            <li>JS：事件委託、陣列方法（map, sort, filter...）等
+                            </li>
+                            <li>RWD響應式、flex排版</li>
+                        </ul>
+                    </article>
+                </div>
             </section>
-            <section id="resume" class="resume">
+            <section id="resume" class="resume flex">
                 <div class="profile">
                     <img src="img/0825.png" alt="大頭照">
                     <p>進修前端程式語言中</p>
@@ -127,6 +128,19 @@
                         </tbody>
                     </table>
                 </div>
+            </section>
+            <section id="other_project" class="other_project flex">
+                <h3>其他作品</h3>
+                <article class="project_item"><a href="/RWD/RWD_final_main.html" target="_blank"><img src="img/rwd.jpg" alt="作品縮圖"></a>
+                    <h2><a href="/RWD/RWD_final_main.html" target="_blank">多頁響應式網頁</a></h2>
+                    <ul>
+                        <li>CSS：background-clip、background-origin、object-fit等</li>
+                        <li>RWD響應式、flex排版</li>
+                        <li>JS：頁面滑動效果</li>
+                    </ul>
+                </article>
+                <article class="project_item"><iframe src="https://drive.google.com/file/d/1HCItvgskeS58twD4BBEGctxGd96kfjo_/preview" allow="autoplay"></iframe>
+                </article>
             </section>
         </main>
     </div>

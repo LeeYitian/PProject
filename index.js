@@ -1,3 +1,7 @@
+const body = document.querySelector("body");
+const menu = document.querySelector("nav");
+
+
 //定義視窗高度
 function calculateVh() {
     var vh = window.innerHeight * 0.01;
@@ -24,9 +28,9 @@ window.addEventListener('orientationchange', calculateVh);
     }
     fragment.appendChild(loader);
     const wrap = document.querySelector(".wrap");
-    document.querySelector("body").insertBefore(fragment, wrap);
+    body.insertBefore(fragment, wrap);
     setTimeout(() => {
-        document.querySelector("body").removeChild(loader);
+        body.removeChild(loader);
         createBackground();
         wrap.style.display = "block";
         setTimeout(() => { wrap.style.opacity = 1; }, 800)
@@ -49,18 +53,43 @@ function createBackground() {
         background.appendChild(bg_row);
     }
     fragment.appendChild(background);
-    document.querySelector("body").appendChild(fragment);
+    body.appendChild(fragment);
 }
 
 
 //menu
-const menu = document.querySelector("nav");
-const body = document.querySelector("body");
 body.addEventListener("click", () => menu.classList.remove("show"));
 menu.addEventListener("click", showMenu);
 function showMenu(e) {
     if (e.target.closest("ul")) return;
     this.classList.toggle("show");
     e.stopPropagation();
+}
+
+//滑動&滾動
+menu.addEventListener("click", scrollPage);
+window.addEventListener("scroll", scrollActive);
+function scrollPage(e) {
+    if (e.target.nodeName !== "A") return;
+    e.preventDefault();
+    let id = e.target.getAttribute("href");
+    let position = document.querySelector(id).offsetTop;
+    window.scrollTo({
+        top: position - 10,
+        behavior: "smooth"
+    })
+}
+
+function scrollActive() {
+    let alink = document.querySelectorAll("nav a");
+    let pageYOffset = window.pageYOffset;
+    alink.forEach(i => {
+        let id = i.getAttribute("href");
+        let position = document.querySelector(id).offsetTop;
+        let height = document.querySelector(id).offsetHeight;
+        if (pageYOffset > position - 100 && pageYOffset <= position + height) i.classList.add("active");
+        if (pageYOffset < position - 100 || pageYOffset > position + height - 100) i.classList.remove("active");
+    })
+
 }
 
