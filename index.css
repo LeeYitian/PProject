@@ -72,7 +72,7 @@ html {
   font-family: "Noto Sans TC", sans-serif;
   font-size: 16px;
 }
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   html {
     font-size: 12px;
   }
@@ -174,7 +174,7 @@ body {
     transform: rotate(150deg) translateX(270px);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .background .bg_row {
     transform-origin: 900px -115px;
   }
@@ -246,7 +246,7 @@ body {
        object-position: top;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .project_item {
     min-width: 290px;
     margin: 0 2%;
@@ -370,7 +370,7 @@ nav a:active, nav a.active {
 nav li {
   border-bottom: 1px solid darkgray;
 }
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   nav {
     width: 200px;
     right: -200px;
@@ -429,7 +429,7 @@ nav.show {
     flex-grow: 0;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .project {
     justify-content: flex-end;
     overflow-y: visible;
@@ -437,6 +437,7 @@ nav.show {
             clip-path: none;
   }
   .project .intro {
+    font-size: 1.25rem;
     max-width: 100%;
     margin: 0 0 30px;
   }

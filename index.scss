@@ -15,7 +15,7 @@ $orange: #FBC687;
 }
 
 @mixin mobile {
-    @media (max-width: 400px) {
+    @media (max-width: 415px) {
         @content;
     }
 }
@@ -389,6 +389,7 @@ nav {
         overflow-y: visible;
         clip-path: none;
         .intro{
+            font-size: 1.25rem;
             max-width: 100%;
             margin: 0 0 30px;
         }
