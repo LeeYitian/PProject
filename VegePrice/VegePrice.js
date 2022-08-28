@@ -6,31 +6,18 @@ const selectFilter = document.querySelector(".select-custom-selected");
 const selectMenu = document.querySelector(".select-custom");
 selectFilter.addEventListener("click", () => selectMenu.classList.toggle("openMenu"));
 
-// 更換下拉選單選擇的內容
-// const selectOption = document.querySelectorAll(".select-custom-option>div");
-// selectOption.forEach(item => {
-//     item.addEventListener("click", selected);
-// })
-
-// 更換下拉選單選擇內容：大範圍監聽的方法
 const selectOption = document.querySelector(".select-custom-option");
-selectOption.addEventListener("click",selected);
+// selectOption.addEventListener("click",selected);
 
 function selected(e) {
-    // console.log(e.target.innerHTML)
-    // console.log(e.currentTarget.innerHTML)
-    switch(e.currentTarget.nodeName){
+    switch (e.currentTarget.nodeName) {
         case "UL":
             selectFilter.innerHTML = e.target.closest("li").innerHTML;
             break;
         case "THEAD":
             selectFilter.innerHTML = selectOption.children[e.target.closest("th").dataset.option].innerHTML;
             break;
-        // case "I":
-        //     selectFilter.innerHTML = selectOption[e.target.parentNode.dataset.option].innerHTML;
-        //     break;
     }
-    // selectFilter.innerHTML = e.currentTarget.innerHTML;
     selectMenu.classList.remove("openMenu");
 }
 
@@ -38,9 +25,6 @@ function selected(e) {
 const input = document.querySelector(".searchArea input");
 const filterBTNs = document.querySelector(".filterBTNs");
 
-// const vegeBTN = document.querySelector(".filterBTNs button:first-child");
-// const fruitBTN = document.querySelector(".filterBTNs button:nth-child(2)");
-// const flowerBTN = document.querySelector(".filterBTNs button:last-child");
 
 const resultText = document.querySelector(".selectFilterArea p");
 
@@ -48,10 +32,7 @@ let searchType = "";
 let searchTypeText = "";
 let inputText = "";
 
-filterBTNs.addEventListener("click",selectFilterBTN);
-// vegeBTN.addEventListener("click", selectFilterBTN);
-// fruitBTN.addEventListener("click", selectFilterBTN);
-// flowerBTN.addEventListener("click", selectFilterBTN);
+filterBTNs.addEventListener("click", selectFilterBTN);
 
 input.addEventListener("keyup", () => {
     inputText = input.value;
@@ -102,9 +83,6 @@ const searchBTN = document.querySelector(".searchArea .btn-search");
 searchBTN.addEventListener("click", requestData);
 input.addEventListener("keyup", requestData);
 
-// vegeBTN.addEventListener("click", requestData);
-// fruitBTN.addEventListener("click", requestData);
-// flowerBTN.addEventListener("click", requestData);
 
 
 const upArrows = document.querySelectorAll(".fa-caret-up");
@@ -112,19 +90,18 @@ const downArrows = document.querySelectorAll(".fa-caret-down");
 const selectFilterText = selectFilter.innerHTML;
 
 
-let searchData = ""; //為了操作排序，所以把請求回來的資料存在function之外
+let searchData = "";
 
 function requestData(e) {
     //每次搜尋都把之前的排序樣式歸零
-    upArrows.forEach(i=>i.classList.remove("filterSelect"));
-    downArrows.forEach(i=>i.classList.remove("filterSelect"));
+    upArrows.forEach(i => i.classList.remove("filterSelect"));
+    downArrows.forEach(i => i.classList.remove("filterSelect"));
     selectFilter.innerHTML = selectFilterText;
 
     if (e.type === "click" || e.key === "Enter") {
         table.innerHTML = `<p>資料載入中...</p>`;
         axios.get("https://data.coa.gov.tw/Service/OpenData/FromM/FarmTransData.aspx").then(function (response) {
             let data = response.data;
-            // console.log(data.length)
             processDate(data);
         })
     }
@@ -172,21 +149,15 @@ function renderData(data) {
 // 排序資料
 selectOption.addEventListener("click", sortData);
 
-// const tableHead = document.querySelectorAll("thead th");
-// tableHead.forEach(i => i.addEventListener("click", sortData));
-//改成大範圍監聽：
 const tableHead = document.querySelector("thead");
 tableHead.addEventListener("click", sortData);
 
 function sortData(e) {
-    // upArrows.forEach(i=>i.classList.remove("filterSelect"));
-    // console.log(e.target)
-    // console.log(e.currentTarget)
-    
-    if(e.currentTarget.nodeName ==="THEAD" && (e.target.closest("th").textContent === "市場名稱"||e.target.closest("th").textContent ==="作物名稱"))return;
-    
-    downArrows.forEach(i=>i.classList.remove("filterSelect"));
-    let sortBy = (e.currentTarget.nodeName !== "THEAD") ? e.target.closest("li").dataset.property : e.target.closest("th").textContent;
+    if(searchData.length === 0)alert("沒有資料可供排序，請先進行搜尋");
+    if (e.currentTarget.nodeName === "THEAD" && (e.target.closest("th").textContent === "市場名稱" || e.target.closest("th").textContent === "作物名稱")) return;
+
+    downArrows.forEach(i => i.classList.remove("filterSelect"));
+    let sortBy = (e.currentTarget.nodeName !== "THEAD") ? e.target.closest("li").dataset.property : e.target.closest("th").textContent.trim();
 
     if (e.target.className.includes("down")) {
         searchData.sort((item1, item2) => item1[sortBy] - item2[sortBy]);
@@ -198,15 +169,6 @@ function sortData(e) {
                 i.classList.add("filterSelect");
             };
         });
-      
-        // let option;
-        // selectOption.forEach((i) => {
-        //     if (i.dataset.property === sortBy) {
-        //         option = i.innerHTML;
-        //     }
-        // })
-        // selectFilter.innerHTML = option;
-      
         selected(e);
         return;
     }
@@ -220,7 +182,7 @@ function sortData(e) {
             downArrow.classList.add("filterSelect");
             return;
         }
-        
+
     }
 
     searchData.sort((item1, item2) => item2[sortBy] - item1[sortBy]);
@@ -231,15 +193,6 @@ function sortData(e) {
             i.classList.add("filterSelect");
         };
     });
-  
-    // let option;
-    // selectOption.forEach((i) => {
-    //     if (i.dataset.property === sortBy) {
-    //         option = i.innerHTML;
-    //     }
-    // })
-    // selectFilter.innerHTML = option;
-  
     selected(e);
 
 }
