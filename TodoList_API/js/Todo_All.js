@@ -135,7 +135,7 @@ function loginRegister(e) {
                 icon: 'success',
                 title: r.data.message,
                 text: `${r.data.nickname}，你好！`
-            }).then(() => window.location = "/Practice-Project/TodoList_API/Todo_main.html");
+            }).then(() => window.location = "/PProject/TodoList_API/Todo_main.html");
             // console.log(token);
         }).catch((e) => {
             // console.log(e);
@@ -164,7 +164,7 @@ function logout() {
             title: r.data.message,
         }).then(() => {
             sessionStorage.clear();
-            window.location = "/Practice-Project/TodoList_API/Todo_index.html";
+            window.location = "/PProject/TodoList_API/Todo_index.html";
         })
 
     }).catch((e) => {
@@ -198,7 +198,7 @@ function requestData() {
             icon: 'warning',
             title: e.response.data.message,
             text: '轉至登入頁面'
-        }).then(() => window.location = "/Practice-Project/TodoList_API/Todo_index.html");
+        }).then(() => window.location = "/PProject/TodoList_API/Todo_index.html");
     })
 }
 
