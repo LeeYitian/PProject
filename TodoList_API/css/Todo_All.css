@@ -128,12 +128,14 @@ label {
 .indexWrap {
   background: #FFD370;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .indexContainer {
   max-width: 1028px;
   margin: 0 auto;
-  padding: 87px 11%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,7 +144,6 @@ label {
   .indexContainer {
     flex-direction: column;
     align-items: stretch;
-    padding: 48px 8.5%;
   }
 }
 
@@ -228,6 +229,7 @@ section.login a:active {
 }
 @media (max-width: 576px) {
   section.login {
+    max-width: 100%;
     margin-left: 0;
   }
   section.login h2 {
