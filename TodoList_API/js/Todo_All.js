@@ -29,8 +29,8 @@ const tabArea = document.querySelector(".listArea .tab");
 if (!sitePath.includes("main")) {
     change_a.addEventListener("click", changeText);
     form.addEventListener("submit", loginRegister);
-    PWD.addEventListener("keyup",checkPWD);
-    PWDAgain.addEventListener("keyup",checkPWDAgain);
+    PWD.addEventListener("keyup", checkPWD);
+    PWDAgain.addEventListener("keyup", checkPWDAgain);
 } else {
     //顯示暱稱
     const headerNickName = document.querySelector("header h2");
@@ -75,23 +75,23 @@ function changeText() {
 }
 
 //密碼輸入確認
-function checkPWD(){
-    let PWD = "[0-9A-z.*]{6,}";
+function checkPWD() {
+    let PWD = "[0-9A-Za-z.*]{6,}";
     const notice = document.querySelector("form p.PWD");
-    if(this.value.match(PWD) || this.value === ""){
-        notice.textContent="";
-    }else{
-        let str = this.parentNode.parentNode.classList.contains("register")?`尚須${6-this.value.length}個以上字元`:"與格式不符";
+    if (this.value.match(PWD) || this.value === "") {
+        notice.textContent = "";
+    } else {
+        let str = this.parentNode.parentNode.classList.contains("register") ? `尚須${6 - this.value.length}個以上字元` : "與格式不符";
         notice.textContent = str;
     }
 }
-function checkPWDAgain(){
+function checkPWDAgain() {
     let PWDText = PWD.value.trim();
     let PWDAgainText = PWDAgain.value.trim();
     const notice = document.querySelector("form p.PWDAgain");
-    if(PWDAgainText === PWDText || PWDAgainText === ""){
+    if (PWDAgainText === PWDText || PWDAgainText === "") {
         notice.textContent = "";
-    }else{
+    } else {
         notice.textContent = "與密碼不相符";
     }
 }
@@ -172,7 +172,7 @@ function logout() {
         let reason = e.response.data.error ? e.response.data.error : "";
         // alert(e.response.data.message + "　" + reason);
         Swal.fire({
-            icon: 'success',
+            icon: 'error',
             title: e.response.data.message,
             text: reason
         })
@@ -263,7 +263,7 @@ function addListItem(e) {
                 "content": inputText
             }
         };
-        
+
         axios.post(url, APIData, {
             headers: {
                 Authorization: sessionStorage.getItem("token")
@@ -331,6 +331,7 @@ function itemStatus(e) {
         // console.log("itemStatus", e);
         let reason = e.response.data.error ? e.response.data.error : "";
         alert(e.response.data.message + "　" + reason);
+        requestData();
     })
 
 }
@@ -350,7 +351,7 @@ function deleteAll() {
         }
     }).filter(i => i !== undefined);
     // console.log(needDelete);
-    
+
     //先直接更新已請求過的資料並渲染
     listData = listData.filter(i => !i.completed_at);
     //為了在渲染的時候顯示全部的內容
@@ -366,7 +367,9 @@ function deleteAll() {
             })
         })
         .catch((e) => {
-            console.log("deletAll", e);
+            let reason = e.response.data.error ? e.response.data.error : "";
+            alert(e.response.data.message + "　" + reason);
+            requestData();
         });
 }
 

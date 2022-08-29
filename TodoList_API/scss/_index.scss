@@ -1,12 +1,15 @@
 .indexWrap {
     background: $yellow;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .indexContainer {
     max-width: 1028px;
     margin: 0 auto;
-    padding: 87px 11%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,7 +17,6 @@
     @include mobile {
         flex-direction: column;
         align-items: stretch;
-        padding: 48px 8.5%;
     }
 }
 
@@ -108,6 +110,7 @@ section.login {
     }
 
     @include mobile {
+        max-width: 100%;
         margin-left: 0;
         h2 {
             text-align: center;
