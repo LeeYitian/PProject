@@ -219,7 +219,7 @@ main {
   top: 34px;
   z-index: 100;
 }
-.selectFilterArea .select-custom-option > li {
+.selectFilterArea .select-custom-option > li{
   border-bottom: 1px solid #F4F1EA;
   -webkit-user-select: none;
      -moz-user-select: none;
